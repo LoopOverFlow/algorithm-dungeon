@@ -34,18 +34,25 @@ public class MonsterListe {
         return count;
     }
 
-    public String remove(String typ) {
-        MonsterNode current = head;
-        while(current != null && current.getMonster().getTyp() != typ) {
-            current = current.getNext();
+public String remove(String typ) {
+    if (head == null) {
+        return "Monster existiert nicht.";
         }
-        if (current == null) {
-            return "Monster existiert nicht.";
-        } else {
-            String monsterTyp = current.getMonster().getTyp();
-            current.setCurrent(current.getNext().getMonster());
-            current.setNext(current.getNext().getNext());
-            return "Monster " + monsterTyp + " wurde entfernt.";
+    if (head.getMonster().getTyp().equals(typ)) {
+        String monsterTyp = head.getMonster().getTyp();
+        head = head.getNext(); // Der neue Kopf ist einfach der nächste in der Schlange
+        return "Monster " + monsterTyp + " wurde entfernt.";
         }
+    MonsterNode current = head;
+    while (current.getNext() != null && !current.getNext().getMonster().getTyp().equals(typ)) {
+        current = current.getNext();
+        }
+    if (current.getNext() == null) {
+        return "Monster existiert nicht.";
+        }
+    String monsterTyp = current.getNext().getMonster().getTyp();
+    current.setNext(current.getNext().getNext());
+    
+    return "Monster " + monsterTyp + " wurde entfernt.";
     }
 }
