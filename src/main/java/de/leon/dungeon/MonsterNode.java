@@ -21,7 +21,4 @@ public class MonsterNode {
         this.next = next; 
     }
 
-    public void setCurrent(Monster monster){
-        this.monster = monster;
-    }
 }
