@@ -34,25 +34,54 @@ public class MonsterListe {
         return count;
     }
 
-public String remove(String typ) {
-    if (head == null) {
-        return "Monster existiert nicht.";
+    private int countRecursive(MonsterNode node) {
+        // 1. Base Case: Wenn kein Knoten mehr da ist
+        if (node == null) {
+        return 0;
         }
-    if (head.getMonster().getTyp().equals(typ)) {
-        String monsterTyp = head.getMonster().getTyp();
-        head = head.getNext(); // Der neue Kopf ist einfach der nächste in der Schlange
+        
+        // 2. Recursive Step: 1 + Größe des Rests
+        return 1 + countRecursive(node.getNext());
+    }
+
+    public int sizeRecursive() {
+        return countRecursive(head); // Wir starten die Suche beim Kopf
+    }
+
+
+    public boolean containMonsterRecursive(MonsterNode node, String typ){
+        if (node == null) {
+            return false;
+        }
+        if (node.getMonster().getTyp().equals(typ)) {
+            return true;
+        }
+        return containMonsterRecursive(node.getNext(), typ);
+    }
+
+    public boolean containMonster(String typ){
+        return containMonsterRecursive(this.head, typ);
+    }
+
+    public String remove(String typ) {
+        if (head == null) {
+            return "Monster existiert nicht.";
+            }
+        if (head.getMonster().getTyp().equals(typ)) {
+            String monsterTyp = head.getMonster().getTyp();
+            head = head.getNext(); // Der neue Kopf ist einfach der nächste in der Schlange
+            return "Monster " + monsterTyp + " wurde entfernt.";
+            }
+        MonsterNode current = head;
+        while (current.getNext() != null && !current.getNext().getMonster().getTyp().equals(typ)) {
+            current = current.getNext();
+            }
+        if (current.getNext() == null) {
+            return "Monster existiert nicht.";
+            }
+        String monsterTyp = current.getNext().getMonster().getTyp();
+        current.setNext(current.getNext().getNext());
+        
         return "Monster " + monsterTyp + " wurde entfernt.";
-        }
-    MonsterNode current = head;
-    while (current.getNext() != null && !current.getNext().getMonster().getTyp().equals(typ)) {
-        current = current.getNext();
-        }
-    if (current.getNext() == null) {
-        return "Monster existiert nicht.";
-        }
-    String monsterTyp = current.getNext().getMonster().getTyp();
-    current.setNext(current.getNext().getNext());
-    
-    return "Monster " + monsterTyp + " wurde entfernt.";
     }
 }

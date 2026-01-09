@@ -29,5 +29,23 @@ public class MonsterTest {
         assertEquals(1, monsterlist.size(), "MonsterListe sollte jetzt 1 Monster enthalten.");
         assertEquals("Monster existiert nicht.", monsterlist.remove("Phönix"), "Monster 'Phönix' sollte nicht exestieren.");
     }
+
+    @Test
+    public void testMonsterListRecursiveSize(){
+        MonsterListe monsterlist = new MonsterListe();
+        monsterlist.add(new Monster("Goblin", 50));
+        monsterlist.add(new Monster("Ork", 80));
+        monsterlist.add(new Monster("Troll", 120));
+        assertEquals(3, monsterlist.sizeRecursive(), "Rekursive Größe sollte 3 sein.");
+    }
+
+    @Test
+    public void testContainMonster(){
+        MonsterListe monsterlist = new MonsterListe();
+        monsterlist.add(new Monster("Goblin", 50));
+        monsterlist.add(new Monster("Ork", 80));
+        assertTrue(monsterlist.containMonster("Ork"), "MonsterListe sollte Ork enthalten.");
+        assertFalse(monsterlist.containMonster("Drache"), "MonsterListe sollte Drache nicht enthalten.");
+    }
 }
 
