@@ -15,5 +15,9 @@ public class Main {
         System.out.println("Anzahl Gegner: " + meinDungeon.getMonsterCount());
         
         meinDungeon.showMonsters();
+
+        System.out.println(meinDungeon.removeMonster("Goblin"));
+        System.out.println("Nach dem Entfernen eines Monsters:");
+        meinDungeon.showMonsters();
     }
 }

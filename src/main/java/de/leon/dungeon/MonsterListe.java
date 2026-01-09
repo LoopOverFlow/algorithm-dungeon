@@ -33,4 +33,19 @@ public class MonsterListe {
         }
         return count;
     }
+
+    public String remove(String typ) {
+        MonsterNode current = head;
+        while(current != null && current.getMonster().getTyp() != typ) {
+            current = current.getNext();
+        }
+        if (current == null) {
+            return "Monster existiert nicht.";
+        } else {
+            String monsterTyp = current.getMonster().getTyp();
+            current.setCurrent(current.getNext().getMonster());
+            current.setNext(current.getNext().getNext());
+            return "Monster " + monsterTyp + " wurde entfernt.";
+        }
+    }
 }

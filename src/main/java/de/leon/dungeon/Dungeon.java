@@ -19,4 +19,8 @@ public class Dungeon {
     public int getMonsterCount() {
         return monsterListe.size();
     }
+
+    public String removeMonster(String typ) {
+        return monsterListe.remove(typ);
+    }
 }

@@ -20,4 +20,8 @@ public class MonsterNode {
     public void setNext(MonsterNode next) { 
         this.next = next; 
     }
+
+    public void setCurrent(Monster monster){
+        this.monster = monster;
+    }
 }
