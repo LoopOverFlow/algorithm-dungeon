@@ -19,5 +19,15 @@ public class Main {
         System.out.println(meinDungeon.removeMonster("Goblin"));
         System.out.println("Nach dem Entfernen eines Monsters:");
         meinDungeon.showMonsters();
+
+        MonsterTree monsterTree = new MonsterTree();
+        monsterTree.add(new Monster("Slime", 50));
+        monsterTree.add(new Monster("Goblin", 30));
+        monsterTree.add(new Monster("Orc", 70));
+        monsterTree.add(new Monster("Dragon", 20));
+        monsterTree.add(new Monster("Orc", 40));
+        monsterTree.add(new Monster("Troll", 60));
+        monsterTree.add(new Monster("Giant", 80));
+        monsterTree.printSorted();
     }
 }

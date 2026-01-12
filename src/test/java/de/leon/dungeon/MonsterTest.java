@@ -47,5 +47,23 @@ public class MonsterTest {
         assertTrue(monsterlist.containMonster("Ork"), "MonsterListe sollte Ork enthalten.");
         assertFalse(monsterlist.containMonster("Drache"), "MonsterListe sollte Drache nicht enthalten.");
     }
+
+    @Test
+    public void testMonsterTreeHeight(){
+    MonsterTree monsterTree = new MonsterTree();
+        monsterTree.add(new Monster("Slime", 50));
+        monsterTree.add(new Monster("Goblin", 30));
+        monsterTree.add(new Monster("Orc", 70));
+        monsterTree.add(new Monster("Dragon", 20));
+        monsterTree.add(new Monster("Orc", 40));
+        monsterTree.add(new Monster("Troll", 60));
+        monsterTree.add(new Monster("Giant", 80));
+        assertEquals(2, monsterTree.getHeight(), "Die Höhe des MonsterBaums sollte 2 sein, da wir von 0 beginnen.");
+    }
+
+    @Test public void testMonsterTreeHeightNull(){
+        MonsterTree monsterTree = new MonsterTree();
+        assertEquals(-1, monsterTree.getHeight(), "Die Höhe eines Leeren Baums sollte -1 betragen.");
+    }
 }
 
