@@ -44,4 +44,17 @@ public class MonsterTree {
         return Math.max(leftHeight, rightHeight) + 1;
     }
 
+    public int getBalance() {
+        return getBalanceRecursive(root);
+    }
+
+    private int getBalanceRecursive(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+        int leftHeight = getHeightRecursive(node.getLeft());
+        int rightHeight = getHeightRecursive(node.getRight());
+        return rightHeight - leftHeight;
+    }
+
 }

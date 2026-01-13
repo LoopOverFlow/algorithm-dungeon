@@ -65,5 +65,14 @@ public class MonsterTest {
         MonsterTree monsterTree = new MonsterTree();
         assertEquals(-1, monsterTree.getHeight(), "Die Höhe eines Leeren Baums sollte -1 betragen.");
     }
+
+    @Test
+    public void MonsterTreeBalance(){
+        MonsterTree monsterTree = new MonsterTree();
+        monsterTree.add(new Monster("Golbin", 50));
+        monsterTree.add(new Monster("Orc", 30));
+        monsterTree.add(new Monster("Troll", 20));
+        assertEquals(-2, monsterTree.getBalance(), "Der Baum sollte linkslastig sein mit einer Balance von -2.");
+    }
 }
 
