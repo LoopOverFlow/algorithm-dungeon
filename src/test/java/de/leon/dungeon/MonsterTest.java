@@ -74,5 +74,40 @@ public class MonsterTest {
         monsterTree.add(new Monster("Troll", 20));
         assertEquals(-2, monsterTree.getBalance(), "Der Baum sollte linkslastig sein mit einer Balance von -2.");
     }
+    
+
+    @Test
+    public void testMonsterTreeRotateLeft(){
+        MonsterTree monsterTree = new MonsterTree();
+        monsterTree.add(new Monster("Slime", 1));
+        monsterTree.add(new Monster("Slime", 2));
+        monsterTree.add(new Monster("Slime", 3));
+        monsterTree.add(new Monster("Slime", 4));
+        monsterTree.add(new Monster("Slime", 5));
+        monsterTree.add(new Monster("Slime", 6));
+        monsterTree.add(new Monster("Slime", 7));
+        monsterTree.add(new Monster("Slime", 8));
+        monsterTree.add(new Monster("Slime", 9));
+        monsterTree.add(new Monster("Slime", 10));
+        monsterTree.add(new Monster("Slime", 11));
+        assertEquals(1, monsterTree.getBalance(), "Der Baum sollte nicht Rechtslastig sein.");
+    }
+
+    @Test
+    public void testMonsterTreeRotateRight(){
+        MonsterTree monsterTree = new MonsterTree();
+        monsterTree.add(new Monster("Slime", 11));
+        monsterTree.add(new Monster("Slime", 10));
+        monsterTree.add(new Monster("Slime", 9));
+        monsterTree.add(new Monster("Slime", 8));
+        monsterTree.add(new Monster("Slime", 7));
+        monsterTree.add(new Monster("Slime", 6));
+        monsterTree.add(new Monster("Slime", 5));
+        monsterTree.add(new Monster("Slime", 4));
+        monsterTree.add(new Monster("Slime", 3));
+        monsterTree.add(new Monster("Slime", 2));
+        monsterTree.add(new Monster("Slime", 1));
+        assertEquals(-1, monsterTree.getBalance(), "Der Baum sollte nicht Linkslastig sein.");
+    }
 }
 
